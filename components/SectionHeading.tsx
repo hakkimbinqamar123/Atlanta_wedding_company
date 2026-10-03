@@ -28,11 +28,11 @@ export default function SectionHeading({
       : "text-left items-start mr-auto";
 
   const textColorClass =
-    theme === "dark" ? "text-white" : "text-[#2E2A27]";
+    theme === "dark" ? "text-white" : "text-[#111]";
   const subTextColorClass =
-    theme === "dark" ? "text-white/70" : "text-[#7A736B]";
+    theme === "dark" ? "text-white/70" : "text-[#666]";
   const smallHeadingColor =
-    theme === "dark" ? "text-[#D9B792]" : "text-[#B8926A]";
+    theme === "dark" ? "text-white/60" : "text-[#999]";
 
   return (
     <motion.div

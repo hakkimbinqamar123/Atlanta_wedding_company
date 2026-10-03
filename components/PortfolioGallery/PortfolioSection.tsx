@@ -108,7 +108,7 @@ export default function PortfolioSection() {
       ref={containerRef}
       onMouseMove={handleMouseMove}
       onMouseLeave={() => setMouseOffset({ x: 0, y: 0 })}
-      className="py-24 sm:py-36 lg:py-48 bg-[#EFECE6] text-[#1F1C1A] overflow-hidden relative selection:bg-[#B8926A]/20"
+      className="py-24 sm:py-36 lg:py-48 bg-[#E8EBE4] text-[#111111] overflow-hidden relative selection:bg-[#C49A45]/20"
     >
       {/* Subtle vintage stone texture feel across section */}
       <div className="absolute inset-0 bg-gradient-to-br from-black/[0.02] via-transparent to-black/[0.04] pointer-events-none" />
@@ -141,14 +141,14 @@ export default function PortfolioSection() {
             {/* High-Impact Stacked Condensed Editorial Typography (`Outdoor Travel Needs` style) */}
             <div className="relative mb-12 text-left">
               {/* Exact Star / Sparkle Icon Doodle positioned right next to upper line */}
-              <div className="absolute -top-10 sm:-top-16 right-0 sm:right-6 lg:right-10 z-20 text-[#1F1C1A]">
+              <div className="absolute -top-10 sm:-top-16 right-0 sm:right-6 lg:right-10 z-20 text-[#111111]">
                 <svg
                   width="78"
                   height="78"
                   viewBox="0 0 78 78"
                   fill="none"
                   xmlns="http://www.w3.org/2000/svg"
-                  className="w-14 h-14 sm:w-20 sm:h-20 text-[#1F1C1A] transform rotate-[18deg]"
+                  className="w-14 h-14 sm:w-20 sm:h-20 text-[#111111] transform rotate-[18deg]"
                 >
                   <path
                     d="M39 2L44.5 30.5L73 36L44.5 41.5L39 70L33.5 41.5L5 36L33.5 30.5L39 2Z"
@@ -165,13 +165,13 @@ export default function PortfolioSection() {
               </div>
 
               {/* Stacked Serif Lines with precise indentation offsets */}
-              <span className="font-serif text-7xl sm:text-8xl lg:text-[112px] font-normal text-[#1F1C1A] leading-[0.84] tracking-tighter block">
+              <span className="font-serif text-7xl sm:text-8xl lg:text-[112px] font-normal text-[#111111] leading-[0.84] tracking-tighter block">
                 Our Love
               </span>
-              <span className="font-serif text-6xl sm:text-8xl lg:text-[104px] font-normal text-[#1F1C1A] leading-[0.88] tracking-tighter block ml-8 sm:ml-16 mt-2">
+              <span className="font-serif text-6xl sm:text-8xl lg:text-[104px] font-normal text-[#111111] leading-[0.88] tracking-tighter block ml-8 sm:ml-16 mt-2">
                 Stories
               </span>
-              <span className="font-serif italic text-5xl sm:text-7xl lg:text-[92px] font-light text-[#1F1C1A] leading-[0.92] tracking-tight block ml-14 sm:ml-28 mt-2">
+              <span className="font-serif italic text-5xl sm:text-7xl lg:text-[92px] font-light text-[#111111] leading-[0.92] tracking-tight block ml-14 sm:ml-28 mt-2">
                 & Cinema
               </span>
             </div>
@@ -183,7 +183,7 @@ export default function PortfolioSection() {
             <div className="pl-2">
               <a
                 href="#contact"
-                className="group relative inline-flex items-center justify-center px-10 py-4 bg-[#1F1C1A] text-white font-sans font-medium text-xs uppercase tracking-[0.28em] rounded-full shadow-2xl transition-all duration-500 hover:bg-[#B8926A] hover:shadow-[#B8926A]/30 focus:outline-none focus:ring-2 focus:ring-[#1F1C1A]"
+                className="group relative inline-flex items-center justify-center px-10 py-4 bg-[#111111] text-white font-sans font-medium text-xs uppercase tracking-[0.28em] rounded-full shadow-2xl transition-all duration-500 hover:bg-[#C49A45] hover:shadow-[#C49A45]/30 focus:outline-none focus:ring-2 focus:ring-[#111111]"
               >
                 <span>Explore Full Story</span>
               </a>
@@ -194,3 +194,4 @@ export default function PortfolioSection() {
     </section>
   );
 }
+

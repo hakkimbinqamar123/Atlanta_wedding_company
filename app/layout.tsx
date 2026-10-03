@@ -57,9 +57,10 @@ export default function RootLayout({
           as="image"
         />
       </head>
-      <body className="min-h-full flex flex-col bg-[#F7F5F1] text-[#2E2A27] selection:bg-[#B8926A]/20 selection:text-[#2E2A27]">
+      <body className="min-h-full flex flex-col bg-[#F0F3EC] text-[#111111] selection:bg-[#C49A45]/20 selection:text-[#111111]">
         <SmoothScroll>{children}</SmoothScroll>
       </body>
     </html>
   );
 }
+

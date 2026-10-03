@@ -5,23 +5,26 @@ import Link from "next/link";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
+import { usePathname } from "next/navigation";
 import { luxuryEase } from "@/lib/animations";
 
 const navLinksLeft = [
-  { name: "Home", href: "#home" },
-  { name: "About", href: "#about" },
-  { name: "Portfolio", href: "#portfolio" },
+  { name: "Home", href: "/" },
+  { name: "About", href: "/#about" },
+  { name: "Services", href: "/services" },
 ];
 
 const navLinksRight = [
-  { name: "Stories", href: "#portfolio" },
-  { name: "Testimonials", href: "#testimonials" },
-  { name: "Contact", href: "#contact" },
+  { name: "Portfolio", href: "/portfolio" },
+  { name: "Testimonials", href: "/#testimonials" },
+  { name: "Contact", href: "/contact" },
 ];
 
 export default function Navbar() {
   const [isPastHero, setIsPastHero] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const pathname = usePathname();
+  const isHomePage = pathname === "/";
 
   useEffect(() => {
     const handleScroll = () => {
@@ -49,7 +52,7 @@ export default function Navbar() {
             : "opacity-0 -translate-y-4 pointer-events-none"
           }`}
       >
-        <Link href="#home" className="flex items-center gap-3.5 group focus:outline-none">
+        <Link href="/" className="flex items-center gap-3.5 group focus:outline-none">
           <div className="relative w-10 h-10 sm:w-11 sm:h-11 rounded-full overflow-hidden border border-white/30 bg-black/40 backdrop-blur-md flex items-center justify-center shadow-lg transition-transform duration-500 group-hover:scale-108">
             <Image
               src="/images/icon.png"
@@ -60,10 +63,10 @@ export default function Navbar() {
             />
           </div>
           <div className="flex flex-col">
-            <span className="font-serif italic text-xl sm:text-2xl text-white tracking-wide font-light transition-colors group-hover:text-[#B8926A]">
+            <span className={`font-serif italic text-xl sm:text-2xl tracking-wide font-light transition-colors group-hover:text-[#C49A45] ${isHomePage ? "text-white" : "text-[#111]"}`}>
               Atlanta Wedding Company
             </span>
-            <span className="font-sans text-[8px] uppercase tracking-[0.38em] text-white/70 font-light">
+            <span className={`font-sans text-[8px] uppercase tracking-[0.38em] font-light ${isHomePage ? "text-white/70" : "text-[#111]/70"}`}>
               Fine Art Cinema
             </span>
           </div>
@@ -79,10 +82,14 @@ export default function Navbar() {
       >
         <button
           onClick={() => setMobileMenuOpen(true)}
-          className="group flex items-center gap-2.5 px-5 py-2.5 rounded-full bg-black/40 hover:bg-white/20 backdrop-blur-md text-white border border-white/30 shadow-xl transition-all duration-300 focus:outline-none"
+          className={`group flex items-center gap-2.5 px-5 py-2.5 rounded-full backdrop-blur-md shadow-xl transition-all duration-300 focus:outline-none ${
+            isHomePage
+              ? "bg-black/40 hover:bg-white/20 text-white border border-white/30"
+              : "bg-white/40 hover:bg-black/5 text-[#111] border border-[#111]/20"
+          }`}
         >
           <span className="font-sans text-[11px] uppercase tracking-[0.24em] font-medium">Menu</span>
-          <Menu className="w-4 h-4 text-[#B8926A] transition-transform group-hover:rotate-90" />
+          <Menu className="w-4 h-4 text-[#C49A45] transition-transform group-hover:rotate-90" />
         </button>
       </div>
 
@@ -100,7 +107,7 @@ export default function Navbar() {
               <Link
                 key={link.name}
                 href={link.href}
-                className="font-sans text-xs uppercase tracking-[0.25em] font-medium text-[#2E2A27] hover:text-[#B8926A] transition-colors duration-300 relative py-1 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-[1px] after:bg-[#B8926A] after:transition-all after:duration-300 hover:after:w-full"
+                className="font-sans text-xs uppercase tracking-[0.25em] font-medium text-[#111111] hover:text-[#C49A45] transition-colors duration-300 relative py-1 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-[1px] after:bg-[#C49A45] after:transition-all after:duration-300 hover:after:w-full"
               >
                 {link.name}
               </Link>
@@ -110,10 +117,10 @@ export default function Navbar() {
           {/* Compact Centered Logo with Rounded Circle Icon */}
           <div className="flex-shrink-0 flex items-center gap-3 z-10 px-2">
             <Link
-              href="#home"
+              href="/"
               className="group flex items-center gap-3 focus:outline-none"
             >
-              <div className="relative w-9 h-9 sm:w-10 sm:h-10 rounded-full overflow-hidden border border-[#2E2A27]/20 bg-[#2E2A27] flex items-center justify-center shadow-md transition-transform duration-500 group-hover:scale-106">
+              <div className="relative w-9 h-9 sm:w-10 sm:h-10 rounded-full overflow-hidden border border-[#111111]/20 bg-[#111111] flex items-center justify-center shadow-md transition-transform duration-500 group-hover:scale-106">
                 <Image
                   src="/images/icon.png"
                   alt="Atlanta Wedding Company Logo"
@@ -122,7 +129,7 @@ export default function Navbar() {
                   className="object-cover p-1 rounded-full"
                 />
               </div>
-              <span className="font-serif italic text-lg sm:text-2xl tracking-wider font-light text-[#2E2A27] transition-colors duration-300 group-hover:text-[#B8926A]">
+              <span className="font-serif italic text-lg sm:text-2xl tracking-wider font-light text-[#111111] transition-colors duration-300 group-hover:text-[#C49A45]">
                 Atlanta Wedding Company
               </span>
             </Link>
@@ -134,7 +141,7 @@ export default function Navbar() {
               <Link
                 key={link.name}
                 href={link.href}
-                className="font-sans text-xs uppercase tracking-[0.25em] font-medium text-[#2E2A27] hover:text-[#B8926A] transition-colors duration-300 relative py-1 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-[1px] after:bg-[#B8926A] after:transition-all after:duration-300 hover:after:w-full"
+                className="font-sans text-xs uppercase tracking-[0.25em] font-medium text-[#111111] hover:text-[#C49A45] transition-colors duration-300 relative py-1 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-[1px] after:bg-[#C49A45] after:transition-all after:duration-300 hover:after:w-full"
               >
                 {link.name}
               </Link>
@@ -145,7 +152,7 @@ export default function Navbar() {
           <div className="flex lg:hidden items-center">
             <button
               onClick={() => setMobileMenuOpen(true)}
-              className="p-2 rounded-full text-[#2E2A27] hover:bg-[#2E2A27]/10 transition-colors"
+              className="p-2 rounded-full text-[#111111] hover:bg-[#111111]/10 transition-colors"
               aria-label="Open Menu"
             >
               <Menu className="w-5 h-5" />
@@ -162,12 +169,12 @@ export default function Navbar() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
             transition={{ duration: 0.5, ease: luxuryEase }}
-            className="fixed inset-0 z-50 bg-[#F7F5F1] pt-28 pb-12 px-8 flex flex-col justify-between overflow-y-auto"
+            className="fixed inset-0 z-50 bg-[#F0F3EC] pt-28 pb-12 px-8 flex flex-col justify-between overflow-y-auto"
           >
             <div className="absolute top-6 right-6 sm:right-10">
               <button
                 onClick={() => setMobileMenuOpen(false)}
-                className="p-3 rounded-full text-[#2E2A27] hover:bg-[#2E2A27]/10 transition-colors"
+                className="p-3 rounded-full text-[#111111] hover:bg-[#111111]/10 transition-colors"
                 aria-label="Close Menu"
               >
                 <X className="w-6 h-6" />
@@ -185,7 +192,7 @@ export default function Navbar() {
                   <Link
                     href={link.href}
                     onClick={() => setMobileMenuOpen(false)}
-                    className="font-serif text-3xl sm:text-4xl font-light text-[#2E2A27] hover:text-[#B8926A] transition-colors"
+                    className="font-serif text-3xl sm:text-4xl font-light text-[#111111] hover:text-[#C49A45] transition-colors"
                   >
                     {link.name}
                   </Link>
@@ -197,9 +204,9 @@ export default function Navbar() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.5, duration: 0.8 }}
-              className="border-t border-[#2E2A27]/10 pt-8 mt-12 flex flex-col items-center gap-3 text-center"
+              className="border-t border-[#111111]/10 pt-8 mt-12 flex flex-col items-center gap-3 text-center"
             >
-              <div className="relative w-14 h-14 rounded-full overflow-hidden border border-[#2E2A27]/20 bg-[#2E2A27] flex items-center justify-center shadow-md">
+              <div className="relative w-14 h-14 rounded-full overflow-hidden border border-[#111111]/20 bg-[#111111] flex items-center justify-center shadow-md">
                 <Image
                   src="/images/icon.png"
                   alt="Atlanta Wedding Company Logo"
@@ -208,7 +215,7 @@ export default function Navbar() {
                   className="object-cover p-1.5 rounded-full"
                 />
               </div>
-              <span className="font-serif italic text-2xl text-[#2E2A27]">Atlanta Wedding Company</span>
+              <span className="font-serif italic text-2xl text-[#111111]">Atlanta Wedding Company</span>
               <p className="font-sans text-xs uppercase tracking-[0.25em] text-[#7A736B]">
                 Available Worldwide • Luxury Weddings
               </p>
@@ -219,3 +226,4 @@ export default function Navbar() {
     </>
   );
 }
+

@@ -1,7 +1,7 @@
 "use client";
 
-import ImageCarouselHeroDemo from "./PortfolioGallery/demo";
+import FramerGallery from "./PortfolioGallery/FramerGallery";
 
 export default function Portfolio() {
-  return <ImageCarouselHeroDemo />;
+  return <FramerGallery />;
 }

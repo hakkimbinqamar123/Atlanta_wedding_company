@@ -8,7 +8,7 @@ import {
   heroButtonVariant,
   luxuryEase,
 } from "@/lib/animations";
-import { useScrollVideo } from "@/hooks/useScrollVideo";
+import { useScrollFrames } from "@/hooks/useScrollFrames";
 import LoadingScreen from "@/components/LoadingScreen";
 
 // High-performance direct DOM style calculation for scroll chapters
@@ -50,8 +50,7 @@ function updateChapterStyle(
 }
 
 export default function Hero() {
-  const [ready, setReady] = useState(false);
-  const videoRef = useRef<HTMLVideoElement>(null);
+  const canvasRef = useRef<HTMLCanvasElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
   const contentRef = useRef<HTMLDivElement>(null);
   const indicatorRef = useRef<HTMLDivElement>(null);
@@ -61,18 +60,7 @@ export default function Hero() {
   const chapter2Ref = useRef<HTMLDivElement>(null);
   const chapter3Ref = useRef<HTMLDivElement>(null);
 
-  useEffect(() => {
-    // If video is already buffered in browser cache when mounted
-    if (videoRef.current && videoRef.current.readyState >= 2) {
-      setReady(true);
-    }
-    // Safety fallback: never keep loader beyond 4 seconds
-    const fallbackTimer = setTimeout(() => {
-      setReady(true);
-    }, 4000);
 
-    return () => clearTimeout(fallbackTimer);
-  }, []);
 
   // High-performance direct DOM updates without React re-renders during 400vh scroll
   const handleScrollProgress = useCallback((progress: number) => {
@@ -116,11 +104,12 @@ export default function Hero() {
     updateChapterStyle(chapter3Ref.current, progress, 0.70, 0.76, 0.88, 0.94);
   }, []);
 
-  const { prefersReducedMotion } = useScrollVideo({
-    videoRef,
+  const { prefersReducedMotion, isLoaded } = useScrollFrames({
+    canvasRef,
     containerRef,
+    frameCount: 240,
+    framePath: (index) => `/animations/ezgif-frame-${String(index).padStart(3, '0')}.png`,
     pinDuration: "+=400%",
-    smoothing: 0.22,
     onProgress: handleScrollProgress,
   });
 
@@ -140,25 +129,16 @@ export default function Hero() {
     >
       {/* Loading Screen Overlay showing logo, blurred poster & spinner until video is ready */}
       <AnimatePresence>
-        {!ready && <LoadingScreen key="loader" />}
+        {!isLoaded && <LoadingScreen key="loader" />}
       </AnimatePresence>
 
-      {/* Background Video (Lazy loaded, no autoplay, no loop, muted, playsInline, preload auto, poster) */}
-      <video
-        ref={videoRef}
-        muted
-        playsInline
-        preload="auto"
-        poster="/images/hero-poster.jpg"
-        onLoadedData={() => setReady(true)}
-        onCanPlayThrough={() => setReady(true)}
+      {/* Background Canvas for Frame Sequence */}
+      <canvas
+        ref={canvasRef}
         className={`absolute inset-0 w-full h-full object-cover transform-gpu will-change-transform transition-opacity duration-1000 ${
-          ready ? "opacity-100" : "opacity-0"
+          isLoaded ? "opacity-100" : "opacity-0"
         }`}
-      >
-        <source src="/video/hero.mp4" type="video/mp4" />
-        Your browser does not support HTML5 video.
-      </video>
+      />
 
       {/* Dark warm overlay: rgba(0,0,0,.28) */}
       <div
@@ -198,7 +178,7 @@ export default function Hero() {
           <a
             href="#portfolio"
             onClick={scrollToPortfolio}
-            className="group relative inline-flex items-center justify-center px-9 py-4 bg-white text-[#2E2A27] font-sans font-medium text-xs uppercase tracking-[0.25em] rounded-full shadow-2xl transition-all duration-500 hover:bg-[#B8926A] hover:text-white hover:shadow-[#B8926A]/30 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-black"
+            className="group relative inline-flex items-center justify-center px-9 py-4 bg-white text-[#111111] font-sans font-medium text-xs uppercase tracking-[0.25em] rounded-full shadow-2xl transition-all duration-500 hover:bg-[#C49A45] hover:text-white hover:shadow-[#C49A45]/30 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-black"
           >
             <span>View Portfolio</span>
           </a>
@@ -220,7 +200,7 @@ export default function Hero() {
         style={{ opacity: 0, transform: "translateY(40px)", pointerEvents: "none" }}
         className="absolute inset-0 z-20 max-w-4xl mx-auto px-6 text-center flex flex-col items-center justify-center transition-none will-change-[opacity,transform]"
       >
-        <span className="font-sans text-xs sm:text-sm uppercase tracking-[0.38em] text-[#D9B792] font-medium mb-4">
+        <span className="font-sans text-xs sm:text-sm uppercase tracking-[0.38em] text-[#E6C15C] font-medium mb-4">
           Chapter I — The Emotion
         </span>
         <h2 className="font-serif text-4xl sm:text-6xl md:text-7xl font-light text-white leading-[1.12] tracking-tight mb-6">
@@ -237,7 +217,7 @@ export default function Hero() {
         style={{ opacity: 0, transform: "translateY(40px)", pointerEvents: "none" }}
         className="absolute inset-0 z-20 max-w-4xl mx-auto px-6 text-center flex flex-col items-center justify-center transition-none will-change-[opacity,transform]"
       >
-        <span className="font-sans text-xs sm:text-sm uppercase tracking-[0.38em] text-[#D9B792] font-medium mb-4">
+        <span className="font-sans text-xs sm:text-sm uppercase tracking-[0.38em] text-[#E6C15C] font-medium mb-4">
           Chapter II — The Cinema
         </span>
         <h2 className="font-serif text-4xl sm:text-6xl md:text-7xl font-light text-white leading-[1.12] tracking-tight mb-6">
@@ -254,7 +234,7 @@ export default function Hero() {
         style={{ opacity: 0, transform: "translateY(40px)", pointerEvents: "none" }}
         className="absolute inset-0 z-20 max-w-4xl mx-auto px-6 text-center flex flex-col items-center justify-center transition-none will-change-[opacity,transform]"
       >
-        <span className="font-sans text-xs sm:text-sm uppercase tracking-[0.38em] text-[#D9B792] font-medium mb-4">
+        <span className="font-sans text-xs sm:text-sm uppercase tracking-[0.38em] text-[#E6C15C] font-medium mb-4">
           Chapter III — The Legacy
         </span>
         <h2 className="font-serif text-4xl sm:text-6xl md:text-7xl font-light text-white leading-[1.12] tracking-tight mb-6">
@@ -294,3 +274,4 @@ export default function Hero() {
     </section>
   );
 }
+

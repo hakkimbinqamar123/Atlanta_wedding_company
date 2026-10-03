@@ -179,7 +179,7 @@ export function ImageCarouselHero({
                 "group",
               )}
             >
-              <h3 className="text-lg sm:text-xl font-serif font-semibold text-foreground mb-2 group-hover:text-[#B8926A] transition-colors">
+              <h3 className="text-lg sm:text-xl font-serif font-semibold text-foreground mb-2 group-hover:text-[#C49A45] transition-colors">
                 {feature.title}
               </h3>
               <p className="text-sm sm:text-base text-muted-foreground">{feature.description}</p>
@@ -190,3 +190,4 @@ export function ImageCarouselHero({
     </div>
   )
 }
+

@@ -1,10 +1,10 @@
 @import "tailwindcss";
 
 :root {
-  --background: #F7F5F1;
-  --foreground: #2E2A27;
-  --secondary: #7A736B;
-  --accent: #B8926A;
+  --background: #ffffff;
+  --foreground: #111111;
+  --secondary: #666666;
+  --accent: #999999;
 }
 
 @theme inline {
@@ -39,24 +39,24 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .glass-nav {
-  background: rgba(247, 245, 241, 0.85);
+  background: rgba(255, 255, 255, 0.88);
   backdrop-filter: blur(14px);
   -webkit-backdrop-filter: blur(14px);
-  border-bottom: 1px solid rgba(46, 42, 39, 0.08);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.03);
 }
 
-/* Custom scrollbar styling for luxury feel */
+/* Custom scrollbar styling */
 ::-webkit-scrollbar {
   width: 6px;
 }
 ::-webkit-scrollbar-track {
-  background: #F7F5F1;
+  background: #ffffff;
 }
 ::-webkit-scrollbar-thumb {
-  background: #D5CEC5;
+  background: #cccccc;
   border-radius: 3px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #B8926A;
+  background: #999999;
 }

@@ -54,7 +54,7 @@ export default function LoadingScreen() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.25, duration: 0.6 }}
-          className="font-sans text-[10px] uppercase tracking-[0.42em] text-[#B8926A] mt-2"
+          className="font-sans text-[10px] uppercase tracking-[0.42em] text-[#C49A45] mt-2"
         >
           Fine Art Wedding Cinema
         </motion.span>
@@ -62,7 +62,7 @@ export default function LoadingScreen() {
         {/* Elegant Luxury Progress Bar */}
         <div className="w-44 sm:w-56 h-[2px] bg-white/15 overflow-hidden rounded-full mt-10 relative">
           <motion.div
-            className="w-1/2 h-full bg-[#B8926A] rounded-full"
+            className="w-1/2 h-full bg-[#C49A45] rounded-full"
             animate={{
               x: ["-100%", "200%"],
             }}
@@ -81,3 +81,4 @@ export default function LoadingScreen() {
     </motion.div>
   );
 }
+

@@ -60,15 +60,15 @@ export default function GalleryImage({
             ).toFixed(1)}px, 0)`,
         opacity: hasActiveHover ? (isHovered ? 1 : 0.65) : 1,
       }}
-      className={`group cursor-pointer transition-all duration-500 ease-out overflow-hidden shadow-2xl bg-[#F4F1EA] ${
+      className={`group cursor-pointer transition-all duration-500 ease-out overflow-hidden shadow-2xl bg-[#F0F3EC] ${
         item.maskClass
       } ${
         isMobile
           ? "relative w-full aspect-square mb-8 rounded-[48px] overflow-hidden"
           : `absolute ${item.positionClass} ${
               isHovered
-                ? "z-40 shadow-2xl shadow-[#1F1C1A]/40 ring-4 ring-[#B8926A]/50 scale-103"
-                : "z-10 border-[6px] border-[#F4F1EA]"
+                ? "z-40 shadow-2xl shadow-[#111111]/40 ring-4 ring-[#C49A45]/50 scale-103"
+                : "z-10 border-[6px] border-[#F0F3EC]"
             }`
       }`}
     >
@@ -103,7 +103,7 @@ export default function GalleryImage({
                 : "opacity-0 translate-y-4 pointer-events-none"
             }`}
           >
-            <span className="font-sans text-[9px] sm:text-[10px] uppercase tracking-[0.34em] font-medium text-[#D9B792] mb-1">
+            <span className="font-sans text-[9px] sm:text-[10px] uppercase tracking-[0.34em] font-medium text-[#E6C15C] mb-1">
               {item.location}
             </span>
             <h4 className="font-serif italic text-xl sm:text-2xl font-light text-white leading-tight tracking-wide">
@@ -119,3 +119,4 @@ export default function GalleryImage({
     </motion.div>
   );
 }
+

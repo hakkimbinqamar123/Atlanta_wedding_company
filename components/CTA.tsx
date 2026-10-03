@@ -63,7 +63,7 @@ export default function CTA() {
         >
           <a
             href="mailto:inquire@atlantaweddingcompany.com?subject=Wedding%20Inquiry"
-            className="inline-flex items-center justify-center px-10 py-5 bg-white text-[#2E2A27] font-sans font-medium text-xs uppercase tracking-[0.28em] rounded-full shadow-2xl transition-all duration-500 hover:bg-[#B8926A] hover:text-white hover:shadow-[#B8926A]/40 focus:outline-none focus:ring-2 focus:ring-white"
+            className="inline-flex items-center justify-center px-10 py-5 bg-white text-[#111111] font-sans font-medium text-xs uppercase tracking-[0.28em] rounded-full shadow-2xl transition-all duration-500 hover:bg-[#C49A45] hover:text-white hover:shadow-[#C49A45]/40 focus:outline-none focus:ring-2 focus:ring-white"
           >
             Book Your Wedding
           </a>
@@ -72,3 +72,4 @@ export default function CTA() {
     </section>
   );
 }
+
