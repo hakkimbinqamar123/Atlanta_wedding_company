@@ -62,7 +62,7 @@ export default function Navbar() {
               className="object-cover p-1.5 rounded-full"
             />
           </div>
-          <div className="flex flex-col">
+          <div className="hidden sm:flex flex-col">
             <span className={`font-serif italic text-xl sm:text-2xl tracking-wide font-light transition-colors group-hover:text-[#C49A45] ${isHomePage ? "text-white" : "text-[#111]"}`}>
               Atlanta Wedding Company
             </span>

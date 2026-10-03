@@ -30,14 +30,6 @@ const testimonials = [
     weddingLocation: "Château de Chantilly, France",
     image: "/images/gallery/gallery_golden_hour_1791021356706.png",
   },
-  {
-    id: 3,
-    quote:
-      "We wanted imagery that felt like Vogue meets an heirloom family photo album. They exceeded every expectation, and their ability to catch quiet glances is unmatched.",
-    clientName: "Victoria & James",
-    weddingLocation: "Amalfi Coast, Italy",
-    image: "/images/gallery/gallery_reception_1791021310470.png",
-  },
 ];
 
 const N = testimonials.length;

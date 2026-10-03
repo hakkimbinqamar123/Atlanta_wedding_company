@@ -200,7 +200,7 @@ export default function Gallery() {
         <SectionHeading smallHeading="PORTFOLIO" largeHeading="Stories We Have Been Trusted To Tell" />
       </div>
       <FeaturedStrip />
-      <div className="py-24 md:py-32">
+      <div className="hidden sm:block py-24 md:py-32">
         <Archive />
       </div>
     </section>

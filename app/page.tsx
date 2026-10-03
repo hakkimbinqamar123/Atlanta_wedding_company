@@ -21,7 +21,6 @@ export default function Home() {
         <About />
         <Gallery />
         <Testimonials />
-        <Testimonials />
       </main>
       <Footer />
     </div>

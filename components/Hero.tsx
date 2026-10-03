@@ -4,6 +4,8 @@ import { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
+import { AnimatePresence } from "framer-motion";
+import LoadingScreen from "@/components/LoadingScreen";
 
 // Using premium images generated previously, as image generation quota is exhausted
 const images = [
@@ -15,6 +17,13 @@ const images = [
 
 export default function Hero() {
   const [current, setCurrent] = useState(0);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    // Hide loading screen after 2.5 seconds
+    const loadTimer = setTimeout(() => setLoading(false), 2500);
+    return () => clearTimeout(loadTimer);
+  }, []);
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -25,6 +34,10 @@ export default function Hero() {
 
   return (
     <section className="relative h-screen w-full overflow-hidden bg-[#111]">
+      <AnimatePresence>
+        {loading && <LoadingScreen />}
+      </AnimatePresence>
+
       {/* Carousel Images */}
       {images.map((src, i) => (
         <div
